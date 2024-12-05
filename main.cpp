@@ -13,6 +13,7 @@ int sum_ascii(const string& input){
 
 
 int main() {
+    string line;
     char a = 'A';
     cout << a << endl;
     cout << (int) a << endl;
@@ -30,8 +31,18 @@ int main() {
     
     ifstream file("lab-37-data.txt");
     if (!file.is_open){
-        
+        cout << "Error opening" << endl;
+        return 1;
     }
+
+    grand_total = 0;
+    while (getline(file, line)){
+        grand_total += sum_ascii(line);
+    }
+
+    file.close();
+    cout << "Grand total for ascii is: " << grand_total << endl;
+
     return 0;
 }
 
