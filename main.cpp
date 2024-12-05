@@ -23,7 +23,8 @@ int main() {
     cout << "Enter string to calculate: ";
     getline(cin, test_string);
 
-    cout << "The ascii sum of " << test_string << " is: " << << endl;
+    int ascii_sum = sum_ascii(test_string);
+    cout << "The ascii sum of " << test_string << " is: " << ascii_sum << endl;
     
 
     return 0;
