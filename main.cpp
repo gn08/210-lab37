@@ -28,6 +28,10 @@ int main() {
     int ascii_sum = sum_ascii(test_string);
     cout << "The ascii sum of " << test_string << " is: " << ascii_sum << endl;
     
+    ifstream file("lab-37-data.txt");
+    if (!file.is_open){
+        
+    }
     return 0;
 }
 
