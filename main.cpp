@@ -30,14 +30,16 @@ int main() {
     cout << "The ascii sum of " << test_string << " is: " << ascii_sum << endl;
     
     ifstream file("lab-37-data.txt");
-    if (!file.is_open){
+    if (!file.is_open()){
         cout << "Error opening" << endl;
         return 1;
     }
 
-    grand_total = 0;
+    long long grand_total = 0;
     while (getline(file, line)){
+        if (!line.empty()){
         grand_total += sum_ascii(line);
+        }
     }
 
     file.close();
