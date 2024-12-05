@@ -2,12 +2,12 @@
 #include <string>
 using namespace std;
 
-int sum_ascii(const string& input){
+int gen_hash_index(const string& input){
     int sum = 0;
     for (char c : input){
         sum += (int)c;
     }
-    return sum;
+    return sum % 1000;
 }
 
 
