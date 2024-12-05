@@ -26,7 +26,7 @@ int main() {
     cout << "Enter string to calculate: ";
     getline(cin, test_string);
 
-    int ascii_sum = sum_ascii(test_string);
+    int  = sum_ascii(test_string);
     cout << "The ascii sum of " << test_string << " is: " << ascii_sum << endl;
     
     ifstream file("lab-37-data.txt");
