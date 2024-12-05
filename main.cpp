@@ -4,10 +4,9 @@ using namespace std;
 int sum_ascii(const string&){
     int sum = 0;
     for (char c : input){
-
+        sum += (int)c;
     }
-    return ;
-
+    return sum;
 }
 
 
@@ -19,6 +18,12 @@ int main() {
     int b = 66;
     cout << b << endl;
     cout << (char) b << endl;
+
+    string test_stringl
+    cout << "Enter string to calculate: ";
+    getline(cin, test_string);
+
+    cout << "The ascii sum of " << test_string << " is: " << << endl;
     
 
     return 0;
