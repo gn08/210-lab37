@@ -45,10 +45,14 @@ int main() {
 
     file.close();
 
-    for(const auto& pair){
+    for(const auto& pair: hash_table){
         if (count >= 100) break;
         cout << "Hash index is: " << pair.first;
-        
+        for (const auto& code: pair.second){
+            cout << code << endl;
+        }
+        count++;
+
     }
     
     return 0;
