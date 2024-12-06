@@ -15,6 +15,8 @@ int gen_hash_index(const string& input){
 int main() {
     string line;
     map<int, list<string>> hash_table;
+    int count = 0;
+
     char a = 'A';
     cout << a << endl;
     cout << (int) a << endl;
@@ -38,10 +40,15 @@ int main() {
 
     while (getline(file, line)){
         int index = gen_hash_index(line);
-
+        hash_table[index].push_back(line);
     }
 
     file.close();
+
+    for(const auto& pair){
+        if (count >= 100) break;
+        cout << "Hash index is: " << 
+    }
     
     return 0;
 }
