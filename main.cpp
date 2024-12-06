@@ -14,6 +14,7 @@ int gen_hash_index(const string& input){
 
 int main() {
     string line;
+    map<int, list<string>> hash_table;
     char a = 'A';
     cout << a << endl;
     cout << (int) a << endl;
@@ -26,8 +27,8 @@ int main() {
     cout << "Enter string to calculate: ";
     getline(cin, test_string);
 
-    int  = sum_ascii(test_string);
-    cout << "The ascii sum of " << test_string << " is: " << ascii_sum << endl;
+    int hash_index = gen_hash_index(test_string);
+    cout << "The hash index of " << test_string << " is: " << hash_index << endl;
     
     ifstream file("lab-37-data.txt");
     if (!file.is_open()){
@@ -35,16 +36,13 @@ int main() {
         return 1;
     }
 
-    long long grand_total = 0;
     while (getline(file, line)){
-        if (!line.empty()){
-        grand_total += sum_ascii(line);
-        }
+        int index = gen_hash_index(line);
+
     }
 
     file.close();
-    cout << "Grand total for ascii is: " << grand_total << endl;
-
+    
     return 0;
 }
 
