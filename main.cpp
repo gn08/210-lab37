@@ -47,7 +47,8 @@ int main() {
 
     for(const auto& pair){
         if (count >= 100) break;
-        cout << "Hash index is: " << 
+        cout << "Hash index is: " << pair.first;
+        
     }
     
     return 0;
