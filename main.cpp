@@ -1,5 +1,8 @@
 #include <iostream>
 #include <string>
+#include <map>
+#include <list>
+#include <fstream>
 using namespace std;
 
 int gen_hash_index(const string& input){
@@ -45,7 +48,7 @@ int main() {
 
     file.close();
 
-    for(const auto& pair: hash_table){
+    for(const auto& pair : hash_table) {
         if (count >= 100) break;
         cout << "Hash index is: " << pair.first;
         for (const auto& code: pair.second){
