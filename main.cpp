@@ -17,7 +17,7 @@ int gen_hash_index(const string& input){
 
 int main() {
     string line;
-    map<int, list<string>> hash_table;
+    map<int, list<string> hash_table;
     int count = 0;
 
     char a = 'A';
