@@ -57,7 +57,17 @@ void remove_key(){
 }
 
 void modify_key(){
-
+    auto it = hash_table.find(key);
+    if (it != hash_table.end()){
+        auto& values = it-> second;
+        if (value_it != balues.end()){
+            *value_it = new_value;
+        } else {
+            cout << "Value: " << old_value << " not found at hash: " << key << endl;
+        }
+    } else {
+        cout << "Key: " << key << "not found" << endl;
+    }
 }
 
 int main() {
