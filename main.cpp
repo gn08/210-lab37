@@ -39,8 +39,21 @@ void search_key(){
     }
 }
 
-void remove_key(){
+void add_key(){
+    int key = gen_hash_index(value);
+    hash_table[key].push_back(value);
+    cout << "The added value is: " << value << "- at index: " << key << endl;
+}
 
+
+void remove_key(){
+    auto it = hash_table.find(key);
+    if (it != hash_table.end()){
+        hash_table.erase(it);
+        cout << "Removed at index: " << key << endl;
+    } else {
+        cout << "The key: " << key << " was not found" << endl;
+    }
 }
 
 void modify_key(){
