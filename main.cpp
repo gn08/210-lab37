@@ -17,7 +17,7 @@ void print_first_100(){
     int count = 0;
     for (const auto& pair : hash_table){
         if (count >= 100) break;
-        cout << "Hash Index: " << pair.first << " -> [ ";
+        cout << "Hash Index: " << pair.first << " [ ";
         for (const auto& code : pair.second){
             cout << code << " ";
         }
@@ -27,7 +27,16 @@ void print_first_100(){
 }
 
 void search_key(){
-
+    auto it = hash_table.find(key);
+    if ( it != hash_table.end()){
+        cout << "Hash Index: " << key << " [ ";
+        for (const auto& code : it->second){
+            cout << code << " ";
+        }
+        cout << "]" << endl;
+    } else {
+        cout << "Key: " << key << "- not found in the hash table" << endl;
+    }
 }
 
 void remove_key(){
