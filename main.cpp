@@ -14,7 +14,16 @@ int gen_hash_index(const string& input){
 }
 
 void print_first_100(){
-
+    int count = 0;
+    for (const auto& pair : hash_table){
+        if (count >= 100) break;
+        cout << "Hash Index: " << pair.first << " -> [ ";
+        for (const auto& code : pair.second){
+            cout << code << " ";
+        }
+        cout << "]" << endl;
+        count++;
+    }
 }
 
 void search_key(){
