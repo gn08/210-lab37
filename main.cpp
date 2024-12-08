@@ -13,7 +13,21 @@ int gen_hash_index(const string& input){
     return sum % 1000;
 }
 
+void print_first_100(){
 
+}
+
+void search_key(){
+
+}
+
+void remove_key(){
+
+}
+
+void modify_key(){
+
+}
 
 int main() {
     string line;
