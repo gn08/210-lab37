@@ -62,6 +62,7 @@ void modify_key(){
         auto& values = it-> second;
         if (value_it != balues.end()){
             *value_it = new_value;
+            cout << "Replaced value: " << old_value << " with the new value: " << new_value << "at index: " << key << endl;
         } else {
             cout << "Value: " << old_value << " not found at hash: " << key << endl;
         }
@@ -72,24 +73,9 @@ void modify_key(){
 
 int main() {
     string line;
+    int choice;
     map<int, list<string> hash_table;
-    int count = 0;
 
-    char a = 'A';
-    cout << a << endl;
-    cout << (int) a << endl;
-
-    int b = 66;
-    cout << b << endl;
-    cout << (char) b << endl;
-
-    string test_string;
-    cout << "Enter string to calculate: ";
-    getline(cin, test_string);
-
-    int hash_index = gen_hash_index(test_string);
-    cout << "The hash index of " << test_string << " is: " << hash_index << endl;
-    
     ifstream file("lab-37-data.txt");
     if (!file.is_open()){
         cout << "Error opening" << endl;
@@ -101,18 +87,34 @@ int main() {
         hash_table[index].push_back(line);
     }
 
-    file.close();
+    file.close()
 
-    for(const auto& pair : hash_table) {
-        if (count >= 100) break;
-        cout << "Hash index is: " << pair.first;
-        for (const auto& code: pair.second){
-            cout << code << endl;
+    do{
+        cout<< "Menu: " << endl;
+        cout << "1. Print first 100 entries" << endl;
+        cout << "2. Search for key" << endl;
+        cout << "3. Add key" << endl;
+        cout << "4. Remove key" << endl;
+        cout << "5. Modify key" << endl;
+        cout << "6. Exit" << endl;
+        cin >> choice;
+
+        switch(choice){
+            case 1: {
+
+            }
+            case 2:{
+
+            }
+            case 3:{
+
+            }
+            case 4:{
+
+            }
         }
-        count++;
-
     }
-    
+
     return 0;
 }
 
