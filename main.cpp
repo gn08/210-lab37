@@ -101,18 +101,46 @@ int main() {
 
         switch(choice){
             case 1: {
-
+                print_first_100(hash_table);
+                break;
             }
             case 2:{
-
+                int key;
+                cout < "Enter key to search: ";
+                cin >> key;
+                search_key(hash_table, key);
+                break;
             }
             case 3:{
-
+                string value;
+                cout << "Enter value to add: ";
+                cin.ignore();
+                getline(cin, value);
+                add_key(hash_table, value);
+                break;
             }
             case 4:{
+                int key;
+                cout << "Enter key to remove: ";
+                cin >> key;
+                remove_key(hash_table, key);
+                break;
+            }
+
+            case 5:{
 
             }
-        }
+
+            case 6:{
+                cout << "Exiting " << endl;
+                break;
+            }
+
+            default: {
+                cout << "Invalid" << endl;
+                break;
+            }
+        } while (choice != 6);
     }
 
     return 0;
