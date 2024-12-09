@@ -6,6 +6,9 @@
 #include <algorithm>
 using namespace std;
 
+// Computes a hash index based on the sum of character ASCII values modulo 1000.
+// arguments: `input` (const string&) - the input string to hash.
+// returns: (int) - the computed hash index.
 int gen_hash_index(const string& input){
     int sum = 0;
     for (char c : input){
@@ -14,6 +17,9 @@ int gen_hash_index(const string& input){
     return sum % 1000;
 }
 
+// Prints the first 100 entries in the hash table.
+// arguments: `hash_table` (const map<int, list<string>>&) - the hash table to print from.
+// returns: None.
 void print_first_100(const map<int, list<string>>& hash_table){
     int count = 0;
     for (const auto& pair : hash_table){
@@ -27,6 +33,11 @@ void print_first_100(const map<int, list<string>>& hash_table){
     }
 }
 
+// Searches for a key in the hash table and reports its presence or absence.
+// arguments: 
+// - `hash_table` (const map<int, list<string>>&) - the hash table to search.
+// - `key` (const string&) - the key to search for.
+// returns: None.
 void search_key(const map<int, list<string>>& hash_table, const string& key){
     int hash_index = gen_hash_index(key);
     auto it = hash_table.find(hash_index);
@@ -42,13 +53,22 @@ void search_key(const map<int, list<string>>& hash_table, const string& key){
     }
 }
 
+// Adds a value to the hash table at the computed hash index.
+// arguments: 
+// - `hash_table` (map<int, list<string>>&) - the hash table to modify.
+// - `value` (const string&) - the value to add.
+// returns: none
 void add_key(map<int, list<string>>& hash_table, const string& value){
     int hash_index = gen_hash_index(value);
     hash_table[hash_index].push_back(value);
     cout << "The added value is: " << value << "- at index: " << hash_index << endl;
 }
 
-
+// Removes a key from the hash table if it exists at the computed hash index.
+// arguments: 
+// - `hash_table` (map<int, list<string>>&) - the hash table to modify.
+// - `key` (const string&) - the key to remove.
+// returns: None.
 void remove_key(map<int, list<string>>& hash_table, const string& key){
     int hash_index = gen_hash_index(key);
     auto it = hash_table.find(hash_index);
@@ -69,6 +89,13 @@ void remove_key(map<int, list<string>>& hash_table, const string& key){
     }
 }
 
+//Modifies an existing value in the hash table, replacing it with a new value.
+// arguments: 
+// - `hash_table` (map<int, list<string>>&) - the hash table to modify.
+// - `key` (const string&) - the key associated with the old value.
+// - `old_value` (const string&) - the value to replace.
+// - `new_value` (const string&) - the new value to insert.
+// returns: None.
 void modify_key(map<int, list<string>>& hash_table, const string& key, const string& old_value, const string& new_value){
     int hash_index = gen_hash_index(key);
     auto it = hash_table.find(hash_index);
