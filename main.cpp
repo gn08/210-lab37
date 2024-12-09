@@ -69,7 +69,7 @@ void remove_key(map<int, list<string>>& hash_table, const string& key){
     }
 }
 
-void modify_key(map<int, list<string>>& hash_table, int key, const string& old_value, const string& new_value){
+void modify_key(map<int, list<string>>& hash_table, const string& key, const string& old_value, const string& new_value){
     int hash_index = gen_hash_index(key);
     auto it = hash_table.find(hash_index);
     if (it != hash_table.end()){
