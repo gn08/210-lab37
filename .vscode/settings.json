@@ -6,6 +6,7 @@
         "*.tcc": "cpp",
         "unordered_map": "cpp",
         "string_view": "cpp",
-        "istream": "cpp"
+        "istream": "cpp",
+        "format": "cpp"
     }
 }
