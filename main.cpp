@@ -128,7 +128,17 @@ int main() {
             }
 
             case 5:{
-
+                int key;
+                string old_value, new_value;
+                cout << "Enter key to modify: ";
+                cin >> key;
+                cin.ignore();
+                cout << "Enter old value to replace: ";
+                getline(cin, old_value);
+                cout << "Enter new value: ";
+                getline(cin, new_value);
+                modify_key(hash_table, key, old_value, new_value);
+                break;
             }
 
             case 6:{
