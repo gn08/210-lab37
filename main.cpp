@@ -129,6 +129,7 @@ int main() {
                     add_key(hash_table, value);
                     cout << "Do you want to add another key? (1 = Yes, 0 = No): ";
                     cin >> addAgain;
+                    cin.ignore();
                 }
                 break;
             }
@@ -141,6 +142,7 @@ int main() {
                     remove_key(hash_table, key);
                     cout << "Do you want to remove another key? (1 = Yes, 0 = No): ";
                     cin >> removeAgain;
+                    cin.ignore();
                 }
                 break;
             }
