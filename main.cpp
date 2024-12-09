@@ -27,17 +27,16 @@ void print_first_100(const map<int, list<string>>& hash_table){
     }
 }
 
-void search_key(const map<int, list<string>>& hash_table, int key){
+void search_key(const map<int, list<string>>& hash_table, const string& key){
     int hash_index = gen_hash_index(key);
     auto it = hash_table.find(key);
     if ( it != hash_table.end()){
-        cout << "Hash Index: " << key << " [ ";
-        for (const auto& code : it->second){
-            if (code == key) { 
-                cout << key << " ";
-            }
+        const auto& values = it->second;
+        if (find(values.begin(), values.end(), key) != values.end()) {
+            cout << "Key: " << key << " found at hash index: " << hash_index << endl;
+        } else {
+            cout << "Key: " << key << " not found in the list at index: " << hash_index << endl;
         }
-        cout << "]" << endl;
     } else {
         cout << "Key: " << key << "- not found in the hash table" << endl;
     }
@@ -45,12 +44,12 @@ void search_key(const map<int, list<string>>& hash_table, int key){
 
 void add_key(map<int, list<string>>& hash_table, const string& value){
     int key = gen_hash_index(value);
-    hash_table[key].push_back(value);
+    hash_table[hash_index].push_back(value);
     cout << "The added value is: " << value << "- at index: " << key << endl;
 }
 
 
-void remove_key(map<int, list<string>>& hash_table, int key){
+void remove_key(map<int, list<string>>& hash_table, const string& key){
     int hash_index = gen_hash_index(key);
     auto it = hash_table.find(key);
     if (it != hash_table.end()){
@@ -59,11 +58,14 @@ void remove_key(map<int, list<string>>& hash_table, int key){
         if (value_it != values.end()) {
             values.erase(value_it);
             cout << "Removed key: " << key << " from index: " << hash_index << endl;
+            if (values.empty()) {
+                hash_table.erase(it);
+            }
         } else {
-            cout << "Key: " << key << " not found at index: " << hash_index << endl;
+            cout << "Key: " << key << " not found in the list at index: " << hash_index << endl;
         }
     } else {
-        cout << "The key: " << key << " was not found" << endl;
+        cout << "Key: " << key << " not found in the hash table." << endl;
     }
 }
 
@@ -121,8 +123,7 @@ int main() {
             case 2:{
                 string key;
                 cout << "Enter key to search: ";
-                cin >> key;
-                cin.ignore(numeric_limits<streamsize>::max(), '\n');
+                getline(cin, key);
                 search_key(hash_table, key);
                 break;
 
@@ -130,7 +131,6 @@ int main() {
             case 3:{
                 string value;
                 cout << "Enter value to add: ";
-                cin.ignore(); 
                 getline(cin, value);
                 add_key(hash_table, value);
                 break;
@@ -138,9 +138,8 @@ int main() {
             case 4:{
                 string key;
                 cout << "Enter key to remove: ";
-                cin >> key;
+                getline(cin, key);
                 remove_key(hash_table, key);
-                break;
                 break;
             }
 
