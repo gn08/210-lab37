@@ -111,7 +111,10 @@ int main() {
                 cout << "Enter key to search: ";
                 cin >> key;
                 search_key(hash_table, key);
+                cin.ignore(numeric_limits<streamsize>::max(), '\n'); 
+                search_key(hash_table, key);
                 break;
+
             }
             case 3:{
                 string value;
