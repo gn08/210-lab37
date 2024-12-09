@@ -100,6 +100,7 @@ int main() {
         cout << "5. Modify key" << endl;
         cout << "6. Exit" << endl;
         cin >> choice;
+        cin.ignore();
 
         switch(choice){
             case 1: {
@@ -108,42 +109,26 @@ int main() {
             }
             case 2:{
                 int key;
-                bool searchAgain = true;
-                while (searchAgain) {
-                    cout << "Enter key to search: ";
-                    cin >> key;
-                    search_key(hash_table, key);
-                    cout << "Do you want to search for another key? (1 = Yes, 0 = No): ";
-                    cin >> searchAgain;
-                }
+                cout << "Enter key to search: ";
+                cin >> key;
+                search_key(hash_table, key);
                 break;
 
             }
             case 3:{
                 string value;
-                bool addAgain = true;
-                while (addAgain) {
-                    cout << "Enter value to add: ";
-                    cin.ignore(); 
-                    getline(cin, value);
-                    add_key(hash_table, value);
-                    cout << "Do you want to add another key? (1 = Yes, 0 = No): ";
-                    cin >> addAgain;
-                    cin.ignore();
-                }
+                cout << "Enter value to add: ";
+                cin.ignore(); 
+                getline(cin, value);
+                add_key(hash_table, value);
                 break;
             }
             case 4:{
                 int key;
-                bool removeAgain = true;
-                while (removeAgain) {
-                    cout << "Enter key to remove: ";
-                    cin >> key;
-                    remove_key(hash_table, key);
-                    cout << "Do you want to remove another key? (1 = Yes, 0 = No): ";
-                    cin >> removeAgain;
-                    cin.ignore();
-                }
+                cout << "Enter key to remove: ";
+                cin >> key;
+                remove_key(hash_table, key);
+                break;
                 break;
             }
 
