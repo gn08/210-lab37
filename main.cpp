@@ -3,6 +3,7 @@
 #include <map>
 #include <list>
 #include <fstream>
+#include <algorithm>
 using namespace std;
 
 int gen_hash_index(const string& input){
@@ -107,7 +108,7 @@ int main() {
             }
             case 2:{
                 int key;
-                cout < "Enter key to search: ";
+                cout << "Enter key to search: ";
                 cin >> key;
                 search_key(hash_table, key);
                 break;
