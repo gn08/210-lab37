@@ -100,7 +100,7 @@ int main() {
         cout << "5. Modify key" << endl;
         cout << "6. Exit" << endl;
         cin >> choice;
-        cin.ignore();
+        cin.ignore(numeric_limits<streamsize>::max(), '\n');
 
         switch(choice){
             case 1: {
@@ -111,6 +111,7 @@ int main() {
                 int key;
                 cout << "Enter key to search: ";
                 cin >> key;
+                cin.ignore(numeric_limits<streamsize>::max(), '\n');
                 search_key(hash_table, key);
                 break;
 
