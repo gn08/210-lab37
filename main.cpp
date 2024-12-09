@@ -13,7 +13,7 @@ int gen_hash_index(const string& input){
     return sum % 1000;
 }
 
-void print_first_100(){
+void print_first_100(const map<int, list<string>>& hash_table){
     int count = 0;
     for (const auto& pair : hash_table){
         if (count >= 100) break;
@@ -26,7 +26,7 @@ void print_first_100(){
     }
 }
 
-void search_key(){
+void search_key(const map<int, list<string>>& hash_table, int key){
     auto it = hash_table.find(key);
     if ( it != hash_table.end()){
         cout << "Hash Index: " << key << " [ ";
@@ -39,14 +39,14 @@ void search_key(){
     }
 }
 
-void add_key(){
+void add_key(map<int, list<string>>& hash_table, const string& value){
     int key = gen_hash_index(value);
     hash_table[key].push_back(value);
     cout << "The added value is: " << value << "- at index: " << key << endl;
 }
 
 
-void remove_key(){
+void remove_key(map<int, list<string>>& hash_table, int key){
     auto it = hash_table.find(key);
     if (it != hash_table.end()){
         hash_table.erase(it);
@@ -56,7 +56,7 @@ void remove_key(){
     }
 }
 
-void modify_key(){
+void modify_key(map<int, list<string>>& hash_table, int key, const string& old_value, const string& new_value){
     auto it = hash_table.find(key);
     if (it != hash_table.end()){
         auto& values = it-> second;
