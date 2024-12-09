@@ -60,7 +60,8 @@ void modify_key(map<int, list<string>>& hash_table, int key, const string& old_v
     auto it = hash_table.find(key);
     if (it != hash_table.end()){
         auto& values = it-> second;
-        if (value_it != balues.end()){
+        auto value_it = find(values.begin(), values.end(), old_value);
+        if (value_it != values.end()){
             *value_it = new_value;
             cout << "Replaced value: " << old_value << " with the new value: " << new_value << "at index: " << key << endl;
         } else {
@@ -74,7 +75,7 @@ void modify_key(map<int, list<string>>& hash_table, int key, const string& old_v
 int main() {
     string line;
     int choice;
-    map<int, list<string> hash_table;
+    map<int, list<string>> hash_table;
 
     ifstream file("lab-37-data.txt");
     if (!file.is_open()){
@@ -87,7 +88,7 @@ int main() {
         hash_table[index].push_back(line);
     }
 
-    file.close()
+    file.close();
 
     do{
         cout<< "Menu: " << endl;
