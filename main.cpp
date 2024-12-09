@@ -28,11 +28,14 @@ void print_first_100(const map<int, list<string>>& hash_table){
 }
 
 void search_key(const map<int, list<string>>& hash_table, int key){
+    int hash_index = gen_hash_index(key);
     auto it = hash_table.find(key);
     if ( it != hash_table.end()){
         cout << "Hash Index: " << key << " [ ";
         for (const auto& code : it->second){
-            cout << code << " ";
+            if (code == key) { 
+                cout << key << " ";
+            }
         }
         cout << "]" << endl;
     } else {
@@ -48,17 +51,25 @@ void add_key(map<int, list<string>>& hash_table, const string& value){
 
 
 void remove_key(map<int, list<string>>& hash_table, int key){
+    int hash_index = gen_hash_index(key);
     auto it = hash_table.find(key);
     if (it != hash_table.end()){
-        hash_table.erase(it);
-        cout << "Removed at index: " << key << endl;
+        auto& values = it->second;
+        auto value_it = find(values.begin(), values.end(), key);
+        if (value_it != values.end()) {
+            values.erase(value_it);
+            cout << "Removed key: " << key << " from index: " << hash_index << endl;
+        } else {
+            cout << "Key: " << key << " not found at index: " << hash_index << endl;
+        }
     } else {
         cout << "The key: " << key << " was not found" << endl;
     }
 }
 
 void modify_key(map<int, list<string>>& hash_table, int key, const string& old_value, const string& new_value){
-    auto it = hash_table.find(key);
+    int hash_index = gen_hash_index(key);
+    auto it = hash_table.find(hash_index);
     if (it != hash_table.end()){
         auto& values = it-> second;
         auto value_it = find(values.begin(), values.end(), old_value);
@@ -108,7 +119,7 @@ int main() {
                 break;
             }
             case 2:{
-                int key;
+                string key;
                 cout << "Enter key to search: ";
                 cin >> key;
                 cin.ignore(numeric_limits<streamsize>::max(), '\n');
@@ -125,7 +136,7 @@ int main() {
                 break;
             }
             case 4:{
-                int key;
+                string key;
                 cout << "Enter key to remove: ";
                 cin >> key;
                 remove_key(hash_table, key);
@@ -134,7 +145,7 @@ int main() {
             }
 
             case 5:{
-                int key;
+                string key;
                 string old_value, new_value;
                 cout << "Enter key to modify: ";
                 cin >> key;
