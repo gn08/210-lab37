@@ -29,7 +29,7 @@ void print_first_100(const map<int, list<string>>& hash_table){
 
 void search_key(const map<int, list<string>>& hash_table, const string& key){
     int hash_index = gen_hash_index(key);
-    auto it = hash_table.find(key);
+    auto it = hash_table.find(hash_index);
     if ( it != hash_table.end()){
         const auto& values = it->second;
         if (find(values.begin(), values.end(), key) != values.end()) {
@@ -43,15 +43,15 @@ void search_key(const map<int, list<string>>& hash_table, const string& key){
 }
 
 void add_key(map<int, list<string>>& hash_table, const string& value){
-    int key = gen_hash_index(value);
+    int hash_index = gen_hash_index(value);
     hash_table[hash_index].push_back(value);
-    cout << "The added value is: " << value << "- at index: " << key << endl;
+    cout << "The added value is: " << value << "- at index: " << hash_index << endl;
 }
 
 
 void remove_key(map<int, list<string>>& hash_table, const string& key){
     int hash_index = gen_hash_index(key);
-    auto it = hash_table.find(key);
+    auto it = hash_table.find(hash_index);
     if (it != hash_table.end()){
         auto& values = it->second;
         auto value_it = find(values.begin(), values.end(), key);
@@ -147,8 +147,7 @@ int main() {
                 string key;
                 string old_value, new_value;
                 cout << "Enter key to modify: ";
-                cin >> key;
-                cin.ignore();
+                getline(cin, key);
                 cout << "Enter old value to replace: ";
                 getline(cin, old_value);
                 cout << "Enter new value: ";
